@@ -24,3 +24,21 @@ resource "aws_iam_role" "iam_for_autoscale" {
 EOF
 }
 
+resource "aws_iam_role" "iam_for_ecs_tasks" {
+  name = "iam_for_autoscale"
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "ecs-tasks.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+EOF
+}
