@@ -1,6 +1,6 @@
 variable "container_port" {
   description = "The port on which the container will receive traffic."
-  default     = 443
+  default     = 5000
   type        = "string"
 }
 
@@ -12,7 +12,7 @@ variable "health_check_protocol" {
 
 variable "health_check_port" {
   description = "The port on which the container will receive health checks."
-  default     = 443
+  default     = 3000
   type        = "string"
 }
 
