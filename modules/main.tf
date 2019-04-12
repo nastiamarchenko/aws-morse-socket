@@ -94,7 +94,7 @@ resource "aws_lb_target_group" "main" {
   port = "${var.container_port}"
 
   protocol    = "TCP"
-  vpc_id      = "${var.nlb_vpc_id}"
+  vpc_id      = "${aws_vpc.main.id}"
   target_type = "ip"
 
   # The amount time for the NLB to wait before changing the state of a
