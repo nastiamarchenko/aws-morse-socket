@@ -43,9 +43,9 @@ data "aws_eip" "nlb_eip2" {
   id = "${var.nlb_eip_ids[1]}"
 }
 
-data "aws_eip" "nlb_eip3" {
-  id = "${var.nlb_eip_ids[2]}"
-}
+#data "aws_eip" "nlb_eip3" {
+#  id = "${var.nlb_eip_ids[2]}"
+#}
 
 #
 # Network Load Balancer (NLB)
@@ -58,19 +58,19 @@ resource "aws_lb" "main" {
   enable_cross_zone_load_balancing = "${var.enable_cross_zone_load_balancing}"
 
   subnet_mapping {
-    subnet_id     = "${var.nlb_subnet_ids[0]}"
-    allocation_id = "${var.nlb_eip_ids[0]}"
+    subnet_id     = "${element(aws_subnet.public[0])}" #"${var.nlb_subnet_ids[0]}" 
+    allocation_id = "${element(aws_eip.gw[0])}" #"${var.nlb_eip_ids[0]}"
   }
 
   subnet_mapping {
-    subnet_id     = "${var.nlb_subnet_ids[1]}"
-    allocation_id = "${var.nlb_eip_ids[1]}"
+    subnet_id     = "${element(aws_subnet.public[1])}" #"${var.nlb_subnet_ids[1]}"
+    allocation_id = "${element(aws_eip.gw[1])}" #"${var.nlb_eip_ids[1]}"
   }
 
-  subnet_mapping {
-    subnet_id     = "${var.nlb_subnet_ids[2]}"
-    allocation_id = "${var.nlb_eip_ids[2]}"
-  }
+ # subnet_mapping {
+ #  subnet_id     = "${var.nlb_subnet_ids[2]}"
+ #   allocation_id = "${var.nlb_eip_ids[2]}"
+ # }
 
   tags = {
     Environment = "${var.environment}"
