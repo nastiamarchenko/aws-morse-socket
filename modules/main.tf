@@ -35,13 +35,13 @@
 # Elastic IP (EIP)
 #
 
-data "aws_eip" "nlb_eip1" {
-  id = "${var.nlb_eip_ids[0]}"
-}
+#data "aws_eip" "nlb_eip1" {
+#  id = "${var.nlb_eip_ids[0]}"
+#}
 
-data "aws_eip" "nlb_eip2" {
-  id = "${var.nlb_eip_ids[1]}"
-}
+#data "aws_eip" "nlb_eip2" {
+#  id = "${var.nlb_eip_ids[1]}"
+#}
 
 #data "aws_eip" "nlb_eip3" {
 #  id = "${var.nlb_eip_ids[2]}"
