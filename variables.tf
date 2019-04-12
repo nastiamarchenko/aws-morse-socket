@@ -39,9 +39,10 @@ variable "ecs_autoscale_role" {
   default     = "${aws_iam_role.iam_for_autoscale.arn}"
 }
 
+
 variable "ecs_task_execution_role" {
   description = "Role arn for the ecsTaskExecutionRole"
-  default     = "YOUR_ECS_TASK_EXECUTION_ROLE_ARN"
+  default     = "${aws_iam_role.iam_for_ecs_tasks.arn}"
 }
 
 variable "health_check_path" {
