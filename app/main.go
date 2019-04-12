@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-	ln, err := net.Listen("tcp", ":8080")
+	ln, err := net.Listen("tcp", ":5000")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -46,7 +46,7 @@ func handle(cn net.Conn) {
 	log.Println("handling connection from", cn.RemoteAddr())
 	encoded := EncodeITU(cn.RemoteAddr().String())
 	fmt.Fprintf(cn, "Your remote address is %v\n", cn.RemoteAddr())
-	fmt.Fprintf(cn, "Your morse code is address is %v\n", encoded)
+	fmt.Fprintf(cn, "Your morse code is %v\n", encoded)
 
 	data, err := ioutil.ReadAll(cn)
 	if err != nil {
@@ -196,3 +196,4 @@ var (
 		"=":  "-...-",
 	}
 )
+
