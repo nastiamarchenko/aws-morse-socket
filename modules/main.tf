@@ -58,13 +58,13 @@ resource "aws_lb" "main" {
   enable_cross_zone_load_balancing = "${var.enable_cross_zone_load_balancing}"
 
   subnet_mapping {
-    subnet_id     = "${element(aws_subnet.public[0])}" #"${var.nlb_subnet_ids[0]}" 
-    allocation_id = "${element(aws_eip.gw[0])}" #"${var.nlb_eip_ids[0]}"
+    subnet_id     = "${element(aws_subnet.public.id[0])}" #"${var.nlb_subnet_ids[0]}" 
+    allocation_id = "${element(aws_eip.gw.id[0])}" #"${var.nlb_eip_ids[0]}"
   }
 
   subnet_mapping {
-    subnet_id     = "${element(aws_subnet.public[1])}" #"${var.nlb_subnet_ids[1]}"
-    allocation_id = "${element(aws_eip.gw[1])}" #"${var.nlb_eip_ids[1]}"
+    subnet_id     = "${element(aws_subnet.public.id[1])}" #"${var.nlb_subnet_ids[1]}"
+    allocation_id = "${element(aws_eip.gw.id[1])}" #"${var.nlb_eip_ids[1]}"
   }
 
  # subnet_mapping {
