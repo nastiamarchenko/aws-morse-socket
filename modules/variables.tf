@@ -51,7 +51,7 @@ variable "nlb_eip_ids" {
 
 variable "nlb_listener_port" {
   description = "The port on which the NLB will receive traffic."
-  default     = "443"
+  default     = "110"
   type        = "string"
 }
 
