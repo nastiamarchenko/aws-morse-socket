@@ -1,8 +1,4 @@
-variable "container_port" {
-  description = "The port on which the container will receive traffic."
-  default     = 8080
-  type        = "string"
-}
+
 
 variable "health_check_protocol" {
   description = "The protocol that will be used for health checks.  Options are: TCP, HTTP, HTTPS"
@@ -10,10 +6,21 @@ variable "health_check_protocol" {
   type        = "string"
 }
 
+variable "container_port" {
+  description = "The port on which the container will receive traffic."
+  default     = 8080
+  type        = "string"
+}
+
 variable "health_check_port" {
   description = "The port on which the container will receive health checks."
   default     = 8080
   type        = "string"
+}
+
+variable "app_port" {
+  description = "Port exposed by the docker image to redirect traffic to"
+  default     = 8080
 }
 
 variable "health_check_path" {
@@ -46,12 +53,6 @@ variable "name" {
   default     = "app"
 }
 
-#variable "nlb_eip_ids" {
-#  description = "List of Elastic IP allocation IDs to associate with the NLB. Requires exactly 2 IPs."
-#  type        = "list"
-#  default     = ["eipalloc-0a2306142e1ef53c7",
-#                 "eipalloc-02b30c140722f7659",]
-#}
 
 variable "nlb_listener_port" {
   description = "The port on which the NLB will receive traffic."
@@ -66,20 +67,6 @@ variable "nlb_vpc_id" {
   default     = "aws_vpc.main.id"
 }
 
-#variable "access_key" {}
-#variable "secret_key" {}
-
-#variable "aws_region1" {
-#  default     = "us-east-1"
-#}
-
-#variable "aws_region2" {
-#  default     = "eu-west-1"
-#}
-
-#variable "aws_region3" {
-#  default     = "ap-southeast-1"
-#}
 
 
 variable "az_count" {
@@ -92,30 +79,12 @@ variable "app_image" {
   default     = "morse-socket:latest"
 }
 
-variable "app_port" {
-  description = "Port exposed by the docker image to redirect traffic to"
-  default     = 8080
-}
 
 variable "app_count" {
   description = "Number of docker containers to run"
   default     = 3
 }
 
-#variable "ecs_autoscale_role" {
-#  description = "Role arn for the ecsAutocaleRole"
-#  default     = "${aws_iam_role.iam_for_autoscale.arn}"
-#}
-
-
-#variable "ecs_task_execution_role" {
-#  description = "Role arn for the ecsTaskExecutionRole"
-#  default     = "aws_iam_role.iam_for_ecs_tasks.arn"
-#}
-
-#variable "health_check_path" {
-#  default = "/"
-#}
 
 variable "fargate_cpu" {
   description = "Fargate instance CPU units to provision (1 vCPU = 1024 CPU units)"
