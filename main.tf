@@ -32,20 +32,12 @@ provider "aws" {
 }
 
 
-#variable "ecs_autoscale_role" {}
-
-#"${aws_iam_role.iam_for_autoscale.arn}"
-
-#variable "instance_profile" {}
-
-#    iam_instance_profile        = "${aws_iam_instance_profile.ecs-instance-profile.id}"
 
 
 module "cluster1" {
   source       = "./source"
   region       = "${var.aws_region1}"
   ecs_task_execution_role = "${aws_iam_role.iam_for_ecs_tasks.arn}"
-#  instance_profile = "${aws_iam_instance_profile.ecs-instance-profile.id}"
   ecs_autoscale_role = "${aws_iam_role.iam_for_autoscale.arn}"
 }
 
@@ -54,8 +46,6 @@ module "cluster2" {
   source       = "./source"
   region       = "${var.aws_region2}"
   ecs_task_execution_role = "${aws_iam_role.iam_for_ecs_tasks.arn}"
-#  instance_profile = "${aws_iam_instance_profile.ecs-instance-profile.id}"
-#  cluster_name = "${var.region2_cluster_name}"
   ecs_autoscale_role = "${aws_iam_role.iam_for_autoscale.arn}"
 }
 
@@ -64,8 +54,6 @@ module "cluster3" {
   source       = "./source"
   region       = "${var.aws_region3}"
   ecs_task_execution_role = "${aws_iam_role.iam_for_ecs_tasks.arn}"
-#  instance_profile = "${aws_iam_instance_profile.ecs-instance-profile.id}"
-#  cluster_name = "${var.region3_cluster_name}"
    ecs_autoscale_role = "${aws_iam_role.iam_for_autoscale.arn}"
 }
 
