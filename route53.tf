@@ -10,7 +10,6 @@ resource "aws_route53_record" "morse" {
   records =  [ ["${module.cluster1.eip}"], ["${module.cluster2.eip}"], ["${module.cluster3.eip}"]]
   latency_routing_policy {
     region = "us-west-1"
-    #set_identifier  = "morse-us-west-1"
   }
   set_identifier  = "morse-us-west-1"
 
